@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:textAlignment="center"
     tools:context=".MainActivity">
 
     <TextView
@@ -49,6 +50,7 @@
         android:layout_height="31dp"
         android:layout_marginBottom="52dp"
         android:hint="su IMC es: "
+        android:textAlignment="center"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tv_userCategory"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,10 +61,12 @@
 
     <TextView
         android:id="@+id/tv_userCategory"
-        android:layout_width="188dp"
+        android:layout_width="205dp"
         android:layout_height="65dp"
         android:layout_marginTop="400dp"
         android:hint="su categoria es:"
+        android:textAlignment="center"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btn_calculateIMC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -75,10 +79,23 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Calcular"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.754" />
+
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/design_default_color_primary_dark"
+        android:text="Reset"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_calculateIMC" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

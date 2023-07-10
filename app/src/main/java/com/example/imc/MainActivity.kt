@@ -42,8 +42,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         //ejecutamos el calculo del IMC
-        binding.btnCalculateIMC.setOnClickListener {
+        binding.btnCalculateIMC?.setOnClickListener {
             calculateIMC()
+        }
+        binding.btnReset?.setOnClickListener {
+            model.setUserIMCValue(0.0f)
+            model.setUserCategoryValue("")
+            binding.tvUserIMC.text=""
+            binding.tvUserCategory.text=""
         }
 
 
