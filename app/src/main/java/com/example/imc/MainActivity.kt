@@ -19,32 +19,33 @@ class MainActivity : AppCompatActivity() {
         binding=ActivityMainBinding.inflate(layoutInflater)
         val view=binding.root
         setContentView(view)
-
         //asignamos el valor a nuestro model
         model = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
-        //primero verificamos que haya datos, si no hay, devuelve las TV por defecto
-        if(model.getUserIMCValue()?.equals(0.0f) == true){
-            binding.tvUserIMC.text = ""
-        }
         //el teclado va a ser numerico
         binding.edtUserHeight.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
         binding.edtUserWeight.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
 
+        binding.tvUserIMC.text=""
         //observamos lo que haya en el text vire de IMC
-        model.userIMC.observe(this,){
-            binding.tvUserIMC.text=it.toString()
-        }
+
 
         //observamos  lo que haya en el text view de categoria
         model.userCategory.observe(this,){
             binding.tvUserCategory.text=it.toString()
+        }
+        model.userIMC.observe(this,){
+            binding.tvUserIMC.text=it.toString()
+            if(model.getUserIMCValue()==0.0f){
+                binding.tvUserIMC.text = ""
+            }
         }
 
         //ejecutamos el calculo del IMC
         binding.btnCalculateIMC.setOnClickListener {
             calculateIMC()
         }
+
 
     }
 
