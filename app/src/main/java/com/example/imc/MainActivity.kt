@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             binding.tvUserCategory.text=it.toString()
         }
 
+        //ejecutamos el calculo del IMC
         binding.btnCalculateIMC.setOnClickListener {
             calculateIMC()
         }
@@ -48,17 +49,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calculateIMC(){
+        //obtenemos los valores de los input y los convertimos a float
         val height = binding.edtUserHeight.text.toString().toFloatOrNull()
         val weight = binding.edtUserWeight.text.toString().toFloatOrNull()
 
+        // verificamos que no vengan vacios, si vienen vacios pedimos que sean llenados
         if (height == null || weight == null) {
             Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
         } else {
+
+            //si estan llenados, se guardan los datos para cuando volteamos el dispositivo
             model.setUserHeightValue(height)
             model.setUserWeightValue(weight)
 
+            //calculamos el indice de masa corporal
             val imc = weight  / (height * height)
+            //guardamos ese dato para no perderlo
             model.setUserIMCValue(imc)
+
+            //con base al indice de masa corporal, regresamos el estado de la persona
             val weightCategory = when {
                 imc <= 15.0 -> "Muy severo bajo peso"
                 imc <= 16.0 -> "Severo bajo peso"
@@ -69,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                 imc <= 40.0 -> "Obeso clase II (severamente obeso)"
                 else -> "Obeso clase III (obesidad mórbida)"
             }
-
+            //guardamos ese dato de la persona
             model.setUserCategoryValue(weightCategory)
 
         }
