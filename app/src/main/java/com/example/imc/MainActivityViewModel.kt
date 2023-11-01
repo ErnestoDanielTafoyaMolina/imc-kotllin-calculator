@@ -7,7 +7,9 @@ class MainActivityViewModel:ViewModel() {
     // Guardamos la información del usuario en variables mutables
     var userHeight: MutableLiveData<Float>? = MutableLiveData<Float>().apply { value = 0.0f }
     var userWeight: MutableLiveData<Float>? = MutableLiveData<Float>().apply { value = 0.0f }
+
     var userIMC: MutableLiveData<Float> = MutableLiveData<Float>().apply { value = 0.0f }
+
     var userCategory: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
     var userName: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
 
